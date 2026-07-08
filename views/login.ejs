@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><%- include('partials/head') %></head>
+<body class="min-h-screen flex items-center justify-center">
+  <div class="card w-full max-w-md rounded-2xl p-8">
+    <div class="text-center mb-6">
+      <div class="w-14 h-14 rounded-xl bg-accent mx-auto flex items-center justify-center text-white text-2xl font-bold">P</div>
+      <h1 class="text-white text-2xl font-bold mt-3"><%= settings.panel_name || 'Pterodactyl Dashboard' %></h1>
+      <p class="text-gray-400 text-sm mt-1">Login to manage your servers</p>
+    </div>
+    <% if (error && error.length) { %>
+      <div class="bg-red-500/10 border border-red-500/30 text-red-400 text-sm rounded-lg p-3 mb-4"><%= error[0] %></div>
+    <% } %>
+    <form method="POST" action="/login" class="space-y-4">
+      <div>
+        <label class="text-gray-300 text-sm">Email</label>
+        <input type="email" name="email" required class="w-full mt-1 bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white outline-none focus:border-accent">
+      </div>
+      <div>
+        <label class="text-gray-300 text-sm">Password</label>
+        <input type="password" name="password" required class="w-full mt-1 bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white outline-none focus:border-accent">
+      </div>
+      <button type="submit" class="w-full btn-accent text-white font-semibold rounded-lg py-2.5">Login</button>
+    </form>
+    <p class="text-gray-400 text-sm text-center mt-5">No account? <a href="/register" class="accent font-medium">Register</a></p>
+  </div>
+</body>
+</html>
